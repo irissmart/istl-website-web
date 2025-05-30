@@ -1,0 +1,66 @@
+<section>
+    <div class="bg_sec2 mx-auto max-w-[1360px] h-[600px] flex flex-col justify-center font_helvetica_nue">
+        <div class="flex justify-between py-[50px]">
+            <div class="max-w-[550px] h-full flex flex-col justify-center gap-[24px]">
+                <div class="flex flex-col gap-[24px]">
+                    <h2 class="section_heading">{{section?.title}}</h2>
+                    <p>{{section?.description}}</p>
+                </div>
+                <div class="flex gap-[10px]">
+                    <!-- <a href="/vacancy" class="primery_button2 text-white">Get Started</a> -->
+                    <a href="/contact" class="transparent_button2">{{section?.buttonText}}</a>
+                </div>
+            </div>
+            <div class="w-[50%] grid grid-cols-2 gap-[24px]">
+                <div class="flex flex-col gap-[24px]">
+
+                    <div class="rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                        <div class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                            <h3 class="text-[#1B1B1B] text-[22px] font-bold">01</h3>
+                        </div>
+                        <div class="flex flex-col items-center gap-[5px]">
+                            <div>
+                                <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{section?.steps[0]?.title}}</h4>
+                            </div>
+                            <div>
+                                <p class="text-center text-[16px] text-[#5D5D5D] font-normal">{{section?.steps[0]?.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                        <div class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                            <h3 class="text-[#1B1B1B] text-[22px] font-bold">03</h3>
+                        </div>
+                        <div class="flex flex-col items-center gap-[5px]">
+                            <div>
+                                <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{section?.steps[2]?.title}}</h4>
+                            </div>
+                            <div>
+                                <p class="text-center text-[16px] text-[#5D5D5D] font-normal">{{section?.steps[2]?.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="flex flex-col justify-center gap-[16px]">
+                    <img class="w-[70px]" src="images/arrow.png" alt="">
+                    <div class="rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                        <div class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                            <h3 class="text-[#1B1B1B] text-[22px] font-bold">02</h3>
+                        </div>
+                        <div class="flex flex-col items-center gap-[5px]">
+                            <div>
+                                <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{section?.steps[1]?.title}}</h4>
+                            </div>
+                            <div>
+                                <p class="text-center text-[16px] text-[#5D5D5D] font-normal">{{section?.steps[1]?.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="w-[70px]" src="images/arrow2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

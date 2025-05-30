@@ -1,0 +1,97 @@
+<app-hero title="Find Jobs" backgroundImage = '{{sections[0]?.backgroundImagePath}}'>
+</app-hero>
+
+<section class="font_inter max-w-[1360px] w-full mx-auto px-4 py-10 md:py-20">
+  <div class="flex flex-col gap-6 w-full">
+    <div
+      class="flex flex-col md:flex-row justify-between rounded-[50px] p-[10px] lg:p-[20px] border border-[#D9D9D9] shadow-[0px_12px_40px_0px_rgba(0,44,109,0.04)]">
+      <div class="flex flex-col sm:flex-row w-full gap-4 md:max-w-[600px]">
+        <div class="flex w-full sm:w-[200px] lg:w-[300px] sm:border-r sm:border-r-[#EDEFF5]">
+          <input type="text" id="job-title" [(ngModel)]="filter" (ngModelChange)="filterChanged.next($event)"
+            (keyup.enter)="loadJobs()"
+            class="w-full px-3 py-2 text-[16px] text-[#9199A3] focus:outline-none"
+            placeholder="Job title, Keyword..." />
+        </div>
+        <div class="flex w-full sm:w-[200px] lg:w-[300px]  sm:border-r sm:border-r-[#EDEFF5]">
+          <select id="category" [(ngModel)]="categoryId" (change)="loadJobs()"
+            class=" w-full px-3 py-2 text-[16px] text-[#9199A3]">
+            <option value="0">All Categories</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.jobCategoryName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" class="ml-auto w-fit  primery_button2" (click)="loadJobs()">
+        Find Job
+      </button>
+    </div>
+    <div class="flex flex-col gap-[20px]">
+      <div *ngFor="let job of jobs"
+        class="flex justify-between flex-col items-center p-[20px] rounded-[12px] border border-[#E4E5E8]">
+        <div class="flex flex-col md:flex-row  gap-[10px] justify-between items-start md:items-center p-[10px] sm:p-[20px]  w-full">
+          <div class="flex flex-col sm:flex-row gap-[20px]">
+            <div class="w-[70px] h-[70px] flex-shrink-0 flex justify-center items-center rounded-[6px]"
+              [style.background-color]="job.iconBgColor">
+              <img [src]="job.image" class="w-[30px] h-[30px] object-contain" [alt]="job.title">
+            </div>
+            <div>
+              <div class="flex flex-col gap-[12px]">
+                <div class="flex flex-wrap items-center gap-2">
+                  <h4 class="text-[#18191C] text-[18px] font-medium">{{ job.title }}</h4>
+                  <div *ngFor="let tag of job.jobTags" class="rounded-[52px] px-[12px] py-[3px] bg-[#FFF2CC]">
+                    <p class="font-medium text-[14px] text-[#A97B00]">{{ tag.tagName }}</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap sm:flex-nowrap text-[14px] text-[#5E6670]">
+                  <div>
+                    <p class="text-[14px] font-normal text-[#5E6670]">{{ job.city }}, {{ job.country }}</p>
+                  </div>
+                  <div>
+                    <p class="text-[14px] font-normal text-[#5E6670]">${{job.minSalary}}k - ${{job.maxSalary}}k/month
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-[14px] font-normal text-[#5E6670]">{{ job.daysRemaining }} Days Remaining</p>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="transparent_button3 w-fit text-[16px] " (click)="applyToJob(job)">
+            Apply Now
+          </button>
+        </div>
+
+        <div class="border-t border-[#E4E5E8] pt-[20px] w-full">
+          <button class="flex items-center justify-between w-full text-left p-[10px] py-[10px] px-[20px] hover:bg-gray-50 rounded"
+            (click)="toggleJobDetails(job.id)">
+            <span class="font-medium">Job Details</span>
+            <svg [@rotateChevron]="isJobExpanded(job.id) ? 'expanded' : 'collapsed'" xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div [@expandCollapse]="isJobExpanded(job.id) ? 'expanded' : 'collapsed'" class="overflow-hidden">
+            <div class="pt-[20px]">
+              <h5 class="font-medium mb-[10px]">Description</h5>
+              <div class="text-[#5E6670] mb-[20px]" [innerHTML]="job.description"></div>
+
+              <h5 class="font-medium mb-[10px]">Responsibilities</h5>
+              <div class="text-[#5E6670]" [innerHTML]="job.responsibilities"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="noJobsFound" class="text-center text-[#5E6670] text-[18px] font-medium mt-10">
+        No jobs available for this category.
+      </div>
+    </div>
+
+  </div>
+</section>

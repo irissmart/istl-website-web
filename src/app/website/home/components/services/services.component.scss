@@ -1,0 +1,24 @@
+.bg_sec2 {
+    position: relative;
+}
+
+.bg_sec2::before {
+    content: "";
+    position: absolute;
+    background-image: url("/bg-offering.png");
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.card:hover {
+    border-radius: 3px;
+    border: 1px solid #F1F1F1;
+    background: #FFF;
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+}

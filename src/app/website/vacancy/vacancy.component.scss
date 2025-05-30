@@ -1,0 +1,23 @@
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.transition-all {
+    transition-property: all;
+}
+
+.duration-300 {
+    transition-duration: 300ms;
+}
+
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+.hover\:bg-gray-50:hover {
+    background-color: #f9fafb;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}

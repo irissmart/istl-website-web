@@ -1,0 +1,79 @@
+<header class="header-bg backdrop-blur-[10px] fixed top-0 left-0 w-full z-[999] h-[70px] flex items-center"
+    [ngClass]="{'bg-[#882839]': isSpecificRoute, 'header-bg': !isSpecificRoute}">
+    <div class="app-header max-w-[1360px] mx-auto w-full px-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-white focus:outline-none" (click)="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <a routerLink="/home">
+                <div class="logo w-[170px] h-[45px]">
+                    <img class="w-full h-full object-contain" src="/images/logo2.png" alt="">
+                </div>
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:block">
+            <ul class="list-none flex gap-[30px] xl:gap-[40px]">
+                <li><a routerLink="/home" class="">Home</a></li>
+                <li class="group relative">
+                    <div class="relative">
+                        <a routerLink="/about" class="hover:text-primary">About Us</a>
+                        <ul class="absolute left-0 top-full hidden group-hover:block bg-white shadow-md min-w-[200px] z-10"
+                            (mouseenter)="isDropdownOpen = true" (mouseleave)="isDropdownOpen = false">
+                            <li><a routerLink="/vacancy" class="block px-4 py-2 hover:bg-gray-100">Vacancy</a></li>
+                            <li><a routerLink="/management" class="block px-4 py-2 hover:bg-gray-100">Management</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a routerLink="/services">Our Services</a></li>
+                <li><a routerLink="/partners" class="">Our Partner & Clientele</a></li>
+                <li><a routerLink="/contact" class="">Contact us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Desktop Search -->
+        <div class="hidden lg:block">
+            <app-search></app-search>
+        </div>
+
+        <!-- Mobile Navigation (hidden by default) -->
+        <nav class="lg:hidden fixed top-[70px] left-0 w-full bg-[#882839] backdrop-blur-[10px] shadow-lg transition-all duration-300 overflow-y-auto max-h-[calc(100vh-70px)]"
+            [class.hidden]="!isMenuOpen" [class.block]="isMenuOpen">
+            <!-- Mobile Search -->
+            <div class="px-4 py-3 w-full">
+                <app-search></app-search>
+            </div>
+
+            <ul class="list-none flex flex-col">
+                <li><a routerLink="/home" class="block px-4 py-3 hover:bg-opacity-10 hover:bg-white"
+                        (click)="isMenuOpen = false">Home</a></li>
+                <li class="group relative">
+                    <div class="relative">
+                        <a routerLink="/about" class="block px-4 py-3 hover:bg-opacity-10 hover:bg-white"
+                            (click)="toggleAboutMenu()">About Us</a>
+                        <ul class="bg-white bg-opacity-10 hidden" [class.hidden]="!isAboutMenuOpen"
+                            [class.block]="isAboutMenuOpen">
+                            <li><a routerLink="/vacancy" class="block px-8 py-2 hover:bg-opacity-20 hover:bg-white"
+                                    (click)="isMenuOpen = false">Vacancy</a></li>
+                            <li><a routerLink="/management" class="block px-8 py-2 hover:bg-opacity-20 hover:bg-white"
+                                    (click)="isMenuOpen = false">Management</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a routerLink="/services" class="block px-4 py-3 hover:bg-opacity-10 hover:bg-white"
+                        (click)="isMenuOpen = false">Our Services</a></li>
+                <li><a routerLink="/partners" class="block px-4 py-3 hover:bg-opacity-10 hover:bg-white"
+                        (click)="isMenuOpen = false">Our Partner & Clientele</a></li>
+                <li><a routerLink="/contact" class="block px-4 py-3 hover:bg-opacity-10 hover:bg-white"
+                        (click)="isMenuOpen = false">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

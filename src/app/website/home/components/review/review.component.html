@@ -1,0 +1,25 @@
+<section>
+    <div class="mx-auto max-w-[1360px] h-[650px] pb-[100px] flex flex-col justify-center font_helvetica_nue">
+        <swiper-container class="swiper-container3 pb-[40px]" init="false">
+            <swiper-slide class="p-[20px] custom_swiper_slide bg-[#FFF]"
+                *ngFor="let review of reviews">
+                <div class="flex justify-between">
+                    <div class="max-w-[780px] flex flex-col justify-center gap-[40px]">
+                        <p class="text-[#3D3D3D] text-[32px] font-medium">{{review.description}}</p>
+                        <div class="flex flex-col gap-[10px]">
+                            <p class="text-[#1B1B1B] text-[16px] font-medium">{{review.by}}</p>
+                            <p class="font-normal text-[#6D6D6D] text-[12px]">{{review.designation}}</p>
+                        </div>
+                    </div>
+                    <div class="h-[550px] max-w-[500px]">
+                        <img class="w-[100%] h-[100%] object-cover rounded-[8px]" [src]="review.image" alt="">
+                    </div>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+        <div class="relative">
+            <div class="custom-prev swiper-button-prev"></div>
+            <div class="custom-next swiper-button-next"></div>
+        </div>
+    </div>
+</section>

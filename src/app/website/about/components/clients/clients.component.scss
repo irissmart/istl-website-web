@@ -1,0 +1,44 @@
+swiper-container {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: translateY(50%) !important;
+    width: 40px;
+    height: 40px;
+    background-color: #391017;
+    color: white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.swiper-button-prev {
+    left: 45% !important;
+}
+
+.swiper-button-next {
+    right: 45% !important;
+}
+
+/* Optional: Add hover effects */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #1B1B1B;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+    content: "prev";
+    font-size: 20px;
+}
+
+.swiper-button-next:after{
+    rotate: 180deg;
+}

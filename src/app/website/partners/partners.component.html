@@ -1,0 +1,77 @@
+<section class="hero mt-[70px] bg-cover bg-no-repeat h-[340px] font_helvetica_nue"
+  [ngStyle]="{ 'background-image': 'url(' + section[0].backgroundImagePath + ')' }">
+  <div class="max-w-[1360px] mx-auto flex items-center">
+    <div class="max-w-[1100px] h-[360px] text-white flex flex-col justify-center gap-[20px]">
+      <div class="flex flex-col gap-[15px]">
+        <h1 class="font-medium text-[64px] leading-[80px]">Partners</h1>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="max-w-[1360px] w-full mx-auto px-4 pt-[80px] pb-[40px]">
+  <div class="flex justify-center items-center w-full mb-6 mt-15">
+    <p class="text-[#1B1B1B] text-[40px] font-normal">Our Partners</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div *ngFor="let partner of partners"
+      class="border-2 border-[#DCDCDC] rounded-[10px] p-4 flex flex-col items-center">
+      <div class="w-full max-w-[280px] h-[180px]">
+        <a *ngIf="partner.website" [href]="partner.website" target="_blank" rel="noopener">
+          <img class="w-full h-full object-cover object-center rounded-[10px]" [src]="partner.image"
+            [alt]="partner.name">
+        </a>
+      </div>
+      <div class="max-w-[316px] flex flex-col justify-center items-center font-normal">
+        <p class="text-[18px] font-semibold pt-7 pb-3">{{ partner.name }}</p>
+        <p class="text-[14px] pb-3">{{ partner.title }}</p>
+        <p class="text-[14px] text-center">{{ partner.description }}</p>
+      </div>
+      <div class="flex justify-between items-center gap-x-4 pt-5">
+        <a *ngIf="partner.twitter" [href]="partner.twitter" target="_blank" rel="noopener"
+          class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+          <fa-icon class="text-white" [icon]="faTwitter"></fa-icon>
+        </a>
+        <a *ngIf="partner.linkedin" [href]="partner.linkedin" target="_blank" rel="noopener"
+          class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+          <fa-icon class="text-white" [icon]="faLinkedin"></fa-icon>
+        </a>
+
+        <a *ngIf="partner.tiktok" [href]="partner.tiktok" target="_blank" rel="noopener"
+          class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+          <fa-icon class="text-white" [icon]="faTiktok"></fa-icon>
+        </a>
+
+        <a *ngIf="partner.mail" [href]="partner.mail" target="_blank" rel="noopener"
+          class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+          <fa-icon class="text-white" [icon]="faEnvelope"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section>
+  <div class="mx-auto max-w-[1360px] py-[50px] px-4 md:px-6 xl:px-10 2xl:px-16 flex flex-col gap-[20px] font_inter">
+    <div class="flex flex-col items-center">
+      <h2 class="text-[#1B1B1B] text-[28px] leading-[38px] sm:text-[32px] sm:leading-[44px] md:text-[36px] md:leading-[50px] lg:text-[40px] lg:leading-[56px] font-medium">Our Clients</h2>
+      <p class="text-[#3D3D3D] text-[16px] font-normal">Our valuable clients have a deep trust in our
+        services.</p>
+    </div>
+    <swiper-container init="false">
+      <swiper-slide *ngFor="let client of clients">
+        <div
+          class="cursor-pointer py-[30px] px-[20px] max-w-[200px] h-[100px] rounded-lg border border-[#FFE6EB] bg-[#F6F6F6] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)] flex items-center justify-center">
+          <a [href]="client.url" target="_blank" rel="noopener noreferrer">
+            <img class="w-[170px] h-[50px] object-contain" [src]="client.logo" [alt]="client.name">
+          </a>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</section>

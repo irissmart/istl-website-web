@@ -1,0 +1,33 @@
+<section *ngIf="teamMembers.length > 0" class="max-w-[1360px] w-full mx-auto px-4 py-10 md:py-20">
+  <div class="flex flex-col sm:flex-row justify-between items-start md:items-center w-full mb-6 gap-4">
+    <p class="text-[#1B1B1B] text-[28px] sm:text-[32px] md:text-[40px] font-normal">Meet Our Team</p>
+  <div class="flex ml-auto">
+  <a href="/teams"
+     class=" flex px-6 py-2 justify-center items-center gap-2 border border-[#51131F] rounded-full text-[#51131F] text-[16px] sm:text-[18px] font-normal">
+    View All
+  </a>
+</div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div *ngFor="let member of teamMembers"
+      class="border-2 border-[#DCDCDC] rounded-[10px] p-4 flex flex-col items-center">
+      <div class="w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] md:w-[200px] md:h-[200px]">
+        <img class="w-full h-full object-cover object-center rounded-full" [src]="member.image" [alt]="member.name">
+      </div>
+      <div class="flex flex-col justify-center items-center font-normal max-w-[316px]">
+        <p class="text-[18px] font-semibold pt-7 pb-3">{{ member.name }}</p>
+        <p class="text-[14px] pb-3">{{ member.title }}</p>
+        <div class="text-[14px] text-center">
+          <p [class.line-clamp-3]="!member.expanded">
+            {{ member.description }}
+          </p>
+          <button *ngIf="member.description?.length > 50" (click)="toggleReadMore(member)"
+            class="text-blue-500 underline mt-1 text-sm">
+            {{ member.expanded ? 'Read Less' : 'Read More' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

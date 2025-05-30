@@ -1,0 +1,70 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  height: 64px;
+}
+
+.dropdown-menu{
+  padding: 10px;
+  gap: 16px;
+}
+
+.dropdown-menu li {
+  border-radius: 60px;
+  border: 1px solid #DAEDEB;
+  background: #FFF;
+}
+
+.dropdown-menu li a {
+  color: #4A4A4A;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.header-bg {
+  background: #882839;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+.group:hover .group-hover\:block, 
+.group .group-hover\:block[style*="display: block"] {
+    display: block;
+}
+
+.group ul {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.group ul a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.group ul a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Transition for smooth opening/closing */
+nav {
+    transition: all 0.3s ease;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}

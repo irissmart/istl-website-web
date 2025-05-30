@@ -1,0 +1,42 @@
+<div class="about-comp">
+
+
+    <app-hero
+        title = "{{ sections[2]?.title }}"
+        backgroundImage = '{{sections[2]?.backgroundImagePath}}'>
+    </app-hero>
+
+
+    <section class="flex flex-col lg:flex-row mx-auto max-w-[1360px] justify-between items-center py-10 px-4 md:py-20" *ngIf="sections.length > 0">
+        <div class="w-full font_inter mb-6 md:mb-3 lg:pr-8 text-center lg:text-left">
+            <h1 class="text-[#1B1B1B] text-3xl md:text-[40px] font-normal mb-3">{{ sections[0]?.title }}</h1>
+
+            <p class="text-base md:text-lg">{{ sections[0]?.description }}
+            </p>
+        </div>
+        <div>
+            <img src='{{sections[0]?.sectionImagePath}}' alt="Side Image"    class="max-w-full h-auto object-contain">
+        </div>
+    </section>
+
+    <section class="py-9 lg:py-20 bg-[#EEE]" *ngIf="sections.length > 1">
+        <div class="flex flex-col-reverse lg:flex-row gap-8  mx-auto max-w-[1360px] justify-between items-center py-10 px-4 md:py-20">
+
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-start mb-4">
+                <img src='{{sections[1]?.sectionImagePath}}' alt="Side Image"  class="max-w-full h-auto object-contain">
+            </div>
+            <div class="w-full lg:w-1/2 font_inter text-center lg:text-left  mb-6 lg:mb-0">
+                <h1 class="text-[#1B1B1B] text-3xl md:text-[40px] font-normal mb-3">{{ sections[1]?.title }}</h1>
+
+                <p class="text-base md:text-lg">{{ sections[1]?.description }}
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <app-clients *ngIf="showClients"></app-clients>
+
+
+</div>

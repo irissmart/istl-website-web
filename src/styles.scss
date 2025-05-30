@@ -1,0 +1,264 @@
+/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+@use 'swiper/css';
+@use 'swiper/swiper-bundle.css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.font_inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.font_helvetica_nue {
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.text_white {
+    color: #FFF;
+}
+
+.text_primary_black {
+    color: #1B1B1B;
+}
+
+.text_black2 {
+    color: #131313;
+}
+
+.text_grey {
+    color: #6D6D6D;
+}
+
+.text_grey2 {
+    color: #454545;
+}
+
+.text_grey5 {
+    color: #474C54;
+}
+
+.text_grey3 {
+    color: #5D5D5D;
+}
+
+.text_grey4 {
+    color: #3F3F3F;
+}
+
+.text_grey6 {
+    color: #3D3D3D;
+}
+
+.text_grey7 {
+    color: #888;
+}
+
+.text_red {
+    color: #951C33;
+}
+
+.text_light_red {
+    color: #E05151;
+}
+
+.text_blue {
+    color: #0A65CC;
+}
+
+.bg_red1 {
+    background-color: #51131F;
+}
+
+.bg_red2 {
+    background-color: #371017;
+}
+
+.header_bg1 {
+    background-color: #951C33;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+
+.primary_button {
+    border-radius: 60px;
+    border: 1px solid #EFEFEF;
+    background: #371017;
+    padding: 12px 24px;
+    color: #FFF;
+}
+
+.primary_button:hover,
+.transparent_button:hover,
+.primery_button2:hover,
+.transparent_button2:hover {
+    color: #FFF;
+    background-color: #781c2d;
+}
+
+.transparent_button3:hover {
+    color: #EFEFEF;
+    background-color: #51131F;
+    border: 1px solid #EFEFEF;
+}
+
+.white_button {
+    border-radius: 60px;
+    border: 1px solid #000;
+    background: #FFF;
+    padding: 12px 24px;
+}
+
+.white_button:hover {
+    background-color: transparent;
+    color: #FFF;
+    border: 1px solid #FFF;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #781c2d;
+}
+
+
+/* Optional: Add hover effects */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #781c2d;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    content: "prev";
+    font-size: 20px;
+}
+
+.swiper-button-next:after {
+    rotate: 180deg;
+}
+
+.transparent_button {
+    border-radius: 60px;
+    border: 1px solid #FFF;
+    padding: 12px 24px;
+    color: #FFF;
+}
+
+.transparent_button2 {
+    border-radius: 60px;
+    border: 1px solid #51131F;
+    padding: 12px 24px;
+    color: #51131F;
+}
+
+.transparent_button3 {
+    border-radius: 60px;
+    border: 1px solid #371017;
+    padding: 12px 24px;
+    color: #371017;
+}
+
+.gradient_border {
+    position: relative;
+    padding: 15px 15px 15px 25px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.gradient_border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #51131F 0%, #FFDFE5 100%);
+    border-radius: 15px;
+}
+
+.primery_button2 {
+    border-radius: 48px;
+    border: 1px solid #FFF;
+    background: #51131F;
+    padding: 12px 24px;
+    color: white;
+}
+
+.section_heading {
+    color: #1B1B1B;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 56px;
+}
+
+swiper-container {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: translateY(50%) !important;
+    width: 40px;
+    height: 40px;
+    background-color: #391017;
+    color: white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+swiper-container::part(bullet) {
+    background-color: #ff325e;
+}
+
+swiper-container::part(bullet-active) {
+    background-color: #951C33;
+}
+
+swiper-container::part(container) {
+    position: unset;
+}
+
+swiper-container::part(pagination) {
+    position: absolute;
+    bottom: 0;
+}
+
+.restrict-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-snackbar {
+    text-align: center; /* Optional: Center align text */
+}
+  

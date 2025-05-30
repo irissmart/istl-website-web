@@ -1,0 +1,38 @@
+
+<section>
+    <div class="mx-auto max-w-[1360px] h-[650px] pb-[100px] flex flex-col justify-center font_helvetica_nue">
+        <div class="flex flex-col py-[50px] justify-evenly h-full">
+            <div class="w-full flex flex-col items-center">
+                <h2 class="section_heading">{{section?.name}}</h2>
+                <p class="text_grey6 text-[16px] font-medium">{{section?.description}}</p>
+            </div>
+        </div>
+
+        <swiper-container class="swiper-container2" init="false">
+            <swiper-slide class="custom_swiper_slide"
+                *ngFor="let category of serviceCategories">
+                <div class="card h-[300px] flex flex-col justify-between">
+                    <div class="flex flex-col gap-[18px]">
+                        <div>
+                            <img [src]="category.image" [alt]="category.name">   
+                        </div>
+                        <div class="flex flex-col gap-[12px]">
+                            <h3 class="text-[16px] text-[#1B1B1B] font-medium">{{ category.name }}</h3>
+                        </div>
+                        <p class="text-[12px] font-medium text-[#6D6D6D]">{{ category.description }}</p>
+                    </div>
+                    <div>
+                        <button (click)="navigateToDetails(category.id)"  class="text-[12px] font-normal text-[#951C33]">Read More
+                            <span>-></span></button>
+                        <!-- <a href="/services/nigeria-passport" type="button" class="primery_button2 w-full">Explore Services</a> -->
+                    </div>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+
+        <div class="relative">
+            <button class="custom-prev swiper-button-prev"></button>
+            <button class="custom-next swiper-button-next"></button>
+        </div>
+    </div>
+</section>

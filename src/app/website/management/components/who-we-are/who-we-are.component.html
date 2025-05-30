@@ -1,0 +1,19 @@
+<section *ngFor="let section of sections; let i = index" [ngClass]="{'bg-[#EEE]': i % 2 === 0}" class="py-10 md:py-20">
+    <div class="flex flex-col md:flex-row w-full mx-auto max-w-[1360px] justify-between items-center gap-8 px-4">
+
+        <!-- Image on left if index is even, on right if odd -->
+        <div class="w-full md:w-[50%] h-[250px] md:h-[445px]" *ngIf="i % 2 === 0">
+            <img [src]="section.sectionImagePath" class="object-cover w-full h-full rounded-[10px]" [alt]="section.title">
+        </div>
+
+        <div class="w-full md:w-[50%] font_inter text-center md:text-left">
+            <h1 class="text-[#1B1B1B] text-[24px] md:text-[30px] lg:text-[40px] font-normal mb-3">{{ section.title }}</h1>
+            <p>{{ section.description }}</p>
+        </div>
+
+        <div class="w-full md:w-[50%] h-[250px] md:h-[445px]" *ngIf="i % 2 !== 0">
+            <img [src]="section.sectionImagePath" class="object-cover w-full h-full rounded-[10px]" [alt]="section.title">
+        </div>
+
+    </div>
+</section>

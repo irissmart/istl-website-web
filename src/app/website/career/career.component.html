@@ -1,0 +1,138 @@
+<!-- <app-hero title="Career" backgroundImage='images/about-hero-bg.png'>
+</app-hero>
+
+<section class="flex max-w-[1360px] mx-auto justify-between items-center py-30">
+    <div class="w-[50%] font-normal font_inter">
+        <h1 class="text-[#1B1B1B] text-[40px]">{{ sections[0]?.title }}</h1>
+        <div class="text-[#3D3D3D] text-[16px]">
+            {{ sections[0]?.description }}
+        </div>
+    </div>
+    <div>
+        <img src="images/side-image.png" alt="Side Image" class="w-full max-w-[1000px] h-auto">
+    </div>
+</section> -->
+<app-custom-notification
+  *ngIf="notificationVisible"
+  [message]="notificationMessage"
+  [type]="notificationType">
+</app-custom-notification>
+
+<section class="bg-[#EEE] py-[90px] font_inter">
+    <div
+        class="flex flex-col gap-[20px] bg-[#FFF] mx-auto max-w-[1360px] p-[30px] rounded-[20px] shadow-[0px_0px_30px_0px_rgba(0,0,0,0.10)]">
+
+        <div class="flex flex-col gap-[18px]">
+            <h1 class="text-[#3F3F3F] text-[40px] font-medium">Job Application Form</h1>
+            <p class="max-w-[700px] text-[18px]">Fill in the below form in as much detail as we can. This will be sent
+                direct to our team who will review your application.</p>
+        </div>
+
+        <form #jobForm [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-[20px] text-[16px]">
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">First Name</label>
+                <input type="text" formControlName="firstName"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px]" placeholder="Alex">
+                    <div *ngIf="(form.get('firstName')?.touched || submitted) && form.get('firstName')?.invalid"
+                    class="text-red-500 text-sm">
+                    First Name is required.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Last Name</label>
+                <input type="text" formControlName="lastName"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px]" placeholder="Johnson">
+                <div *ngIf="(form.get('lastName')?.touched || submitted) && form.get('lastName')?.invalid"
+                    class="text-red-500 text-sm">
+                    Last Name is required.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Email Address</label>
+                <input type="text" formControlName="email"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px]" placeholder="example@gmail.com">
+                <div *ngIf="(form.get('email')?.touched || submitted) && form.get('email')?.invalid"
+                    class="text-red-500 text-sm">
+                    Email is required.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Contact Number</label>
+                <input type="text" formControlName="contact"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px]" placeholder="+123 456 789" (keypress)="allowOnlyNumbers($event)">
+                <div *ngIf="(form.get('contact')?.touched || submitted) && form.get('contact')?.invalid"
+                    class="text-red-500 text-sm">
+                    Contact is required.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Job Applying For</label>
+                <select formControlName="jobPosition" class="border border-[#767676] p-[15px] w-full rounded-[50px]" [disabled]="selectedJob !== null">
+                    <option value="" disabled>Select</option>
+                    <option *ngFor="let job of jobs" [value]="job.id">
+                        {{ job.title }}
+                    </option>
+                </select>
+                <div *ngIf="(form.get('jobPosition')?.touched || submitted) && form.get('jobPosition')?.invalid"
+                    class="text-red-500 text-sm">
+                        Job Position is required.
+                </div>
+            </div>
+
+            <!-- Add these after the job position dropdown -->
+            <div *ngIf="selectedJobTags" class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Job Tags</label>
+                <input type="text" [value]="selectedJobTags"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px] bg-gray-100" disabled>
+            </div>
+
+            <div *ngIf="selectedJobLocation" class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Location</label>
+                <input type="text" [value]="selectedJobLocation"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px] bg-gray-100" disabled>
+            </div>
+
+            <div *ngIf="selectedJobSalary" class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Salary Range</label>
+                <input type="text" [value]="selectedJobSalary"
+                    class="border border-[#767676] p-[15px] w-full rounded-[50px] bg-gray-100" disabled>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Your Message</label>
+                <textarea formControlName="message"
+                    class="border border-[#767676] p-[15px] w-full rounded-[20px] h-[226px] resize-none"
+                    placeholder="Message Here...."></textarea>
+                <div *ngIf="(form.get('message')?.touched || submitted) && form.get('message')?.invalid"
+                    class="text-red-500 text-sm">
+                        Message is required.
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[10px]">
+                <label class="block text-gray-700">Upload File</label>
+                <input type="file" #fileInput (change)="onFileSelected($event)" class="border border-[#767676] 
+                            file:bg-[#E6E6E6] 
+                            file:mr-[10px]
+                            file:text-[#4F4F4F] file:text-[12px] 
+                            file:font-medium file:w-[152px] file:h-[34px] 
+                            file:border-0 file:p-[5px]
+                            file:rounded-[100px] file:cursor-pointer 
+                            flex file:gap-2 border p-2 w-full rounded-[50px]">
+                <div *ngIf="(form.get('file')?.touched || submitted) && form.get('file')?.invalid"
+                class="text-red-500 text-sm">
+                    File is required.
+                </div>
+            </div>
+
+            <button class="primery_button2 w-[175px]" type="submit" [disabled]="isLoading"
+            class="primary_button max-w-[240px] cursor-pointer">
+            {{ isLoading ? 'Submitting' : 'Submit' }}
+            </button>
+        </form>
+    </div>
+</section>
