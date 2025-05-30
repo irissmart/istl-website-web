@@ -1,0 +1,32 @@
+.section {
+    border-radius: 10px;
+    background: linear-gradient(90deg, #371017 0%, #9D2E42 100%);
+    overflow: hidden;
+}
+
+
+.section::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 158px;
+    height: 150px;
+    background: url('/images/quarter.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.6; 
+    z-index: 0; 
+}
+
+.section::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 164px;
+    height: 150px;
+    background: url('/images/quarter2.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.6; 
+    z-index: 0;
+}

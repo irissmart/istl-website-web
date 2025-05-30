@@ -1,0 +1,60 @@
+/* Default state (works without JavaScript) */
+app-root {
+    display: flex;
+    flex-direction: column;
+    
+    main {
+      flex: 1;
+      position: relative;
+      overflow-x: hidden;
+    }
+  }
+  
+  /* Enhanced state when JavaScript is available */
+  app-root:has(:root.ready) {
+    :root {
+      visibility: visible;
+      opacity: 0.99;
+      transition: opacity 0.3s ease;
+      
+      &.fully-ready {
+        opacity: 1;
+      }
+    }
+  
+    router-outlet + * {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+/* app.component.scss */
+app-header, app-footer {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block;
+  
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    display: none;
+  }
+}
+
+/* Ensure main content takes full height */
+main {
+  min-height: 100vh;
+}

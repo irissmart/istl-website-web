@@ -1,0 +1,21 @@
+<section>
+    <div class="bg_sec2 mx-auto max-w-[1360px] h-[600px] flex flex-col justify-center font_helvetica_nue">
+        <div class="flex py-[50px]">
+            <div class="w-[50%]">
+                <h2 class="section_heading">{{section?.title}}</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-[20px] w-[50%]" *ngIf="section?.analytics?.length">
+                <div *ngFor="let item of section.analytics" class="flex flex-col gradient_border">
+                  <h3 class="text_grey2 text-[40px] font-medium">{{ item.number }}</h3>
+                  <p class="text_grey6 font-bold text-[16px]">{{ item.title }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-6 py-[50px] w-full gap-y-[30px]" *ngIf="section?.services">
+            <div *ngFor="let service of section?.services" class="card py-[10px] flex flex-col items-center">
+                <img class="w-[40px] h-[40px]" src="/icons/support_agent.png" alt="Business Services">
+                <p class="text_grey7 text-[16px] font-normal">{{ service.title }}</p>
+            </div>
+       </div>
+    </div>
+</section>

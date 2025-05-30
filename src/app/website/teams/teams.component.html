@@ -1,0 +1,52 @@
+<section class="hero mt-[70px] bg-cover bg-no-repeat h-[340px] font_helvetica_nue"
+  [ngStyle]="{'background-image': 'url(\'images/about-hero-bg.png\')'}">
+  <div class="max-w-[1360px] mx-auto flex items-center">
+    <div class="max-w-[1100px] h-[360px] text-white flex flex-col justify-center gap-[20px]">
+      <div class="flex flex-col gap-[15px]">
+        <h1 class="font-medium text-[64px] leading-[80px]">Team</h1>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="max-w-[1360px] w-full mx-auto py-20">
+  <div class="flex justify-center items-center w-full mb-6 mt-15">
+    <p class="text-[#1B1B1B] text-[40px] font-normal">Meet Our Team</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+    <div *ngFor="let member of teamMembers"
+      class="border-2 border-[#DCDCDC] rounded-[10px] p-4 flex flex-col items-center">
+      <div class="w-[250px] h-[250px]">
+        <img class="w-full h-full object-center object-cover rounded-[50%]" [src]="member.image" [alt]="member.name">
+      </div>
+      <div class="max-w-[316px] flex flex-col justify-center items-center font-normal">
+        <p class="text-[18px] font-semibold pt-7 pb-3">{{ member.name }}</p>
+        <p class="text-[14px] pb-3">{{ member.title }}</p>
+        <p [class.line-clamp-3]="!member.expanded">
+          {{ member.description }}
+        </p>
+        <button *ngIf="member.description?.length > 50" (click)="toggleReadMore(member)"
+          class="text-blue-500 underline mt-1 text-sm">
+          {{ member.expanded ? 'Read Less' : 'Read More' }}
+        </button>
+      </div>
+      <!-- <div class="flex justify-between items-center gap-x-4 pt-5">
+            <div class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+              <fa-icon class="text-white" [icon]="faTwitter"></fa-icon>
+            </div>
+            <div class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+              <fa-icon class="text-white" [icon]="faTiktok"></fa-icon>
+            </div>
+            <div class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+              <fa-icon class="text-white" [icon]="faLinkedin"></fa-icon>
+            </div>
+            <div class="bg-[#951C33] rounded-full w-[36px] h-[36px] flex justify-center items-center">
+              <fa-icon class="text-white" [icon]="faEnvelope"></fa-icon>
+            </div>
+          </div> -->
+    </div>
+  </div>
+</section>

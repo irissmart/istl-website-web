@@ -1,0 +1,122 @@
+
+<app-hero title="Contact Us" backgroundImage='{{bannerImage}}'>
+</app-hero>
+
+<app-custom-notification
+  *ngIf="notificationVisible"
+  [message]="notificationMessage"
+  [type]="notificationType">
+</app-custom-notification>
+
+<section>
+    <div class="flex flex-col-reverse lg:flex-row gap-6 mx-auto max-w-[1360px] py-10 px-4 font_inter font-normal">
+        <div
+            class="flex flex-col justify-between w-full lg:w-[35%] bg-[#951C33] text-white text-[42px] border border-[#951C33] rounded-[10px] pl-5 pt-5 pr-5 font-semibold">
+            <div class="flex flex-col">
+                <h1 class="text-2xl md:text-3xl lg:text-[30px] 2xl:text-[42px]">Contact Information</h1>
+                <div class="font_inter font-normal text-[16px] font-[400] pt-7 flex flex-col gap-[30px]">
+
+                    <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                        <fa-icon [icon]="faPhone" class="text-white mt-1"></fa-icon>
+                        <div>
+                            <p class="text-[16px] font-medium">Phone</p>
+                            <p>{{ phoneNo }}</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                        <fa-icon [icon]="faEnvelope" class="text-white mt-1"></fa-icon>
+                        <div>
+                            <p class="text-[16px] font-medium">Email</p>
+                            <p>{{ email }}</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                        <fa-icon [icon]="faLocation" class="text-white mt-1"></fa-icon>
+                        <div>
+                            <p class="text-[16px] font-medium">Address</p>
+                            <p>{{ address }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="mt-50">
+                    <p class="text-[18px] font-normal">Social Links</p>
+                </div>
+                <div class="flex gap-4 pt-5 pb-8">
+                    <div *ngFor="let link of socialLinks"
+                        class="rounded-[50%] w-[40px] h-[40px] border border-white border-[1px] flex justify-center items-center cursor-pointer"
+                        (click)="openLink(link.url)">
+                        <fa-icon [icon]="getIcon(link.platformName)" class="text-2xl"></fa-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="flex flex-col w-full lg:w-[60%] bg-[#F9F9F9] text-black border border-1 border-solid border-[#CBCBCB] rounded-[20px]">
+            <h1 class="text-black font-medium text-2xl md:text-3xl lg:text-[30px] 2xl:text-[42px] p-4">I want to be Contacted</h1>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" action="" class="grid grid-cols-2 gap-3 lg:gap-6 p-[20px]
+">
+                <div class="flex flex-col  w-full pt-3 col-span-2 lg:col-span-1 ">
+                    <label for="First Name" class="pb-2">First Name</label>
+                    <input formControlName="firstName" type="text" placeholder="First Name Here"
+                        class="border border-[#A7A7A7] p-1 rounded-[50px] outline-none bg-[#FFF] px-[15px]">
+                    <div *ngIf="submitted && contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched"
+                        class="text-red-500 text-sm">
+                        First Name is required
+                    </div>
+                </div>
+                <div class="flex flex-col w-full pt-3 col-span-2 lg:col-span-1 ">
+                    <label for="Last Name" class="pb-2">Last Name</label>
+                    <input formControlName="lastName" type="text" placeholder="Last Name Here"
+                        class="border border-[#A7A7A7] p-1 rounded-[50px] outline-none bg-[#FFF] px-[15px]">
+                    <div *ngIf="submitted && contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.dirty"
+                        class="text-red-500 text-sm">
+                        Last Name is required
+                    </div>
+                </div>
+                <div class="flex flex-col w-full pt-3 col-span-2 lg:col-span-1 ">
+                    <label for="email" class="pb-2">Email</label>
+                    <input formControlName="email" type="text" placeholder="Email Here"
+                        class="border border-[#A7A7A7] p-1 rounded-[50px] outline-none bg-[#FFF] px-[15px]">
+                    <div *ngIf="submitted && contactForm.get('email')?.invalid && contactForm.get('email')?.dirty"
+                        class="text-red-500 text-sm">
+                        <div *ngIf="contactForm.get('email')?.errors?.['required']">
+                            Email is required
+                        </div>
+                        <div *ngIf="contactForm.get('email')?.errors?.['email']">
+                            Please enter a valid email
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col w-full pt-3 col-span-2 lg:col-span-1  relative phone-input-container">
+
+
+                    <label for="phone Number" class="pb-2">Phone Number</label>
+                    <input type="text" formControlName="phoneNo"
+                    class="border border-[#A7A7A7] p-1 rounded-[50px] outline-none bg-[#FFF] px-[15px]" placeholder="+123 456 789" (keypress)="allowOnlyNumbers($event)">
+                    <div *ngIf="(contactForm.get('phoneNo')?.touched || submitted) && contactForm.get('phoneNo')?.invalid"
+                        class="text-red-500 text-sm">
+                        Contact is required.
+                    </div>
+                </div>
+                <div class="flex flex-col col-span-2 pt-3">
+                    <label for="message" class="pb-2">Message</label>
+                    <input formControlName="message" type="text" placeholder="Type Here"
+                        class="border border-[#A7A7A7] h-[160px] rounded-[20px] outline-none bg-[#FFF] text-[7E7E7E] text-[16px] pl-[15px] pb-30">
+                    <div *ngIf="submitted && contactForm.get('message')?.invalid && contactForm.get('message')?.dirty"
+                        class="text-red-500 text-sm">
+                        Message is required
+                    </div>
+                </div>
+                <div class="flex justify-end w-full col-span-2">
+
+                    <button type="submit" [disabled]="isLoading" class="primary_button max-w-[240px] cursor-pointer">
+                        {{ isLoading ? 'Submitting...' : 'Submit' }}
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

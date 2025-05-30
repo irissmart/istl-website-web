@@ -1,0 +1,273 @@
+<div class="home_comp">
+
+    <!-- <app-hero *ngIf="sections.length > 0" [section]="sections[0]"></app-hero> -->
+    <section *ngIf="sections.length > 0"
+        class="hero mt-[70px] bg-cover h-screen px-[40px] font_helvetica_nue" [ngStyle]="{'background-image': 'url(' + sections[0]?.backgroundImagePath + ')'}">
+        <div class="max-w-[1360px] mx-auto flex items-center h-full">
+            <div class="max-w-[760px] h-[360px] text-white flex flex-col justify-center gap-[20px]">
+                <div class="flex flex-col gap-[15px]">
+                    <h1 class="font-medium text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] leading-tight lg:leading-[80px]">{{ sections[0]?.title }}</h1>
+                    <p class="text-[20px] font-normal">{{ sections[0]?.description }}</p>
+                </div>
+                <div class="flex gap-[20px]">
+                    <!-- <button type="button" class="primary_button">Get Started</button> -->
+                    <a href="/services" type="button" class="transparent_button">
+                        {{ sections[0]?.buttonText }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <app-services *ngIf="sections.length > 1" [section]="sections[1]"></app-services> -->
+    <section *ngIf="sections.length > 1">
+      <!-- h-[600px] -->
+        <div class="bg_sec2 mx-auto max-w-[1360px] px-4 sm:px-6 md:px-8 flex flex-col justify-center font_helvetica_nue">
+            <div class="flex flex-col sm:flex-row py-[50px] gap-[10px]">
+                <div class="w-full sm:w-[50%]">
+                    <h2 class=" text-[24px] sm:text-[32px] md:text-[36px] lg:text-[40px] text-center sm:text-start">{{sections[1]?.title}}</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-2 gap-[20px] w-full lg:w-1/2" *ngIf="sections[1]?.analytics?.length">
+                    <div *ngFor="let item of sections[1].analytics" class="flex flex-col gradient_border">
+                        <h3 class="text_grey2 text-[20px] sm:text-[36px] lg:text-[40px] font-medium">{{ item.number }}</h3>
+                        <p class="text_grey6 font-bold text-[14px] sm:text-[16px]">{{ item.title }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 py-[50px] w-full gap-y-[30px] gap-x-4" *ngIf="sections[1]?.services">
+                <div *ngFor="let service of sections[1]?.services" class="card py-[10px] flex flex-col items-center hover:shadow-lg hover:bg-gray-100 transition duration-50 rounded-lg cursor-pointer">
+                    <img class="w-[40px] h-[40px]" [src]="service.logoPath" alt="Business Services">
+                    <p class="text_grey7 text-[16px] font-normal">{{ service.title }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <app-best-service *ngIf="sections.length > 2" [section]="sections[2]"></app-best-service> -->
+    <section *ngIf="sections.length > 2">
+      <!-- h-[550px] -->
+        <div class="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 flex flex-col justify-center font_helvetica_nue">
+            <div class="flex flex-col py-[40px] sm:py-[50px] justify-evenly h-full">
+                <div class="w-full flex flex-col items-center text-center px-4 mb-5">
+                    <h2 class=" text-[24px] sm:text-[28px] md:text-[32px]">{{sections[2]?.title}}</h2>
+                    <p class="text_grey6 text-[16px] sm:text-[18px] font-medium mt-2">{{sections[2]?.description}}</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] mt-[40px] w-full" *ngIf="sections[2]?.detailedServices?.length">
+                    <div *ngFor="let service of sections[2].detailedServices" class="flex flex-col items-center sm:items-start gap-[15px]">
+                        <!-- <div class="rounded-[50%] w-[50px] h-[50px] bg-[#FFC0CC] flex items-center justify-center">
+                            <div class="bg-[#FFA9B9] w-[70%] h-[70%] rounded-[50%] flex items-center justify-center">
+                                <fa-icon [icon]="faCircleCheck" class="text-[#391017] text-[24px]"></fa-icon>
+                            </div>
+                        </div> -->
+                        <div class="w-[50px] h-[50px]">
+                            <img class="w-full h-full object-contain" [src]="service.iconPath" alt="Business Services">
+                        </div>
+                        <div class="text-center sm:text-start">
+                            <h3 class="text_grey6 text-[18px] sm:text-[20px] font-medium">{{ service.title }}</h3>
+                            <p class="text_grey7 text-[14px] sm:text-[16px] font-normal">{{ service.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <app-reach-service *ngIf="sections.length > 3 && serviceCategories.length > 0" [section]="sections[3]"></app-reach-service> -->
+    <section *ngIf="serviceCategories.length > 0">
+      <!-- h-[500px] -->
+        <div class="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 flex flex-col justify-center font_helvetica_nue">
+            <div class="flex flex-col py-[40px] sm:py-[50px] justify-evenly h-full">
+                <div class="w-full flex flex-col items-center">
+                    <h2 class="text-[24px] sm:text-[28px] md:text-[32px]">{{sections[3]?.title}}</h2>
+                    <p class="text_grey6 text-[16px] sm:text-[18px] font-medium mt-2 text-center">{{sections[3]?.description}}</p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="swiper-container2 swiper w-full" init="false">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide custom_swiper_slide w-[280px] mr-6 h-[400px]"
+                            *ngFor="let category of serviceCategories; trackBy: trackByCategoryId">
+                            <div
+                                class="card h-[340px] flex flex-col justify-between p-5 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                                <div class="flex flex-col gap-4">
+                                    <div class="w-full h-[160px] overflow-hidden rounded-lg">
+                                        <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                            [src]="category.image" [alt]="category.name">
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <h3 class="text-lg font-semibold text-gray-800 line-clamp-1">{{ category.name }}
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2">{{ category.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="mt-auto">
+                                    <button (click)="navigateToDetails(category.id)"
+                                        class="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary-dark transition-colors">
+                                        Read More
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute w-full top-[50%]">
+                    <button class="custom-prev swiper-button-prev"></button>
+                    <button class="custom-next swiper-button-next"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <app-professional-catalogue *ngIf="sections.length > 4" [section]="sections[4]"></app-professional-catalogue> -->
+    <section *ngIf="sections.length > 4">
+      <!-- h-[600px]  -->
+        <div class="bg_sec2 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 flex flex-col justify-center font_helvetica_nue">
+            <div class="flex flex-col lg:flex-row justify-between py-[40px] sm:py-[50px] gap-10">
+                <div class="max-w-full lg:max-w-[550px] flex flex-col items-center lg:items-start gap-[24px]">
+                    <div class="flex flex-col items-center lg:items-start  gap-[24px]">
+                        <h2 class=" text-[24px] sm:text-[28px] md:text-[32px]">{{sections[4]?.title}}</h2>
+                        <p class="text-[16px] sm:text-[18px] text-center lg:text-start">{{sections[4]?.description}}</p>
+                    </div>
+                    <div class="flex gap-[10px]">
+                        <!-- <a href="/vacancy" class="primery_button2 text-white">Get Started</a> -->
+                        <a href="/contact" class="transparent_button2">{{sections[4]?.buttonText}}</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[50%] grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+                    <div class="  flex flex-col gap-[24px]">
+
+                        <div
+                            class=" rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                            <div
+                                class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                                <h3 class="text-[#1B1B1B] text-[22px] font-bold">01</h3>
+                            </div>
+                            <div class="flex flex-col items-center gap-[5px]">
+                                <div>
+                                    <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{sections[4]?.steps[0]?.title}}
+                                    </h4>
+                                </div>
+                                <div>
+                                    <p class="text-center text-[16px] text-[#5D5D5D] font-normal">
+                                        {{sections[4]?.steps[0]?.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block">
+  <div
+                            class=" rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px] ">
+                            <div
+                                class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                                <h3 class="text-[#1B1B1B] text-[22px] font-bold">03</h3>
+                            </div>
+                            <div class="flex flex-col items-center gap-[5px]">
+                                <div>
+                                    <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{sections[4]?.steps[2]?.title}}
+                                    </h4>
+                                </div>
+                                <div>
+                                    <p class="text-center text-[16px] text-[#5D5D5D] font-normal">
+                                        {{sections[4]?.steps[2]?.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+
+                    </div>
+                    <div class=" flex flex-col justify-center gap-[16px]">
+                        <img class="w-[50px] sm:w-[60px] md:w-[70px] hidden  sm:block" src="images/arrow.png" alt="">
+                        <div
+                            class="rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                            <div
+                                class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                                <h3 class="text-[#1B1B1B] text-[22px] font-bold">02</h3>
+                            </div>
+                            <div class="flex flex-col items-center gap-[5px]">
+                                <div>
+                                    <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{sections[4]?.steps[1]?.title}}
+                                    </h4>
+                                </div>
+                                <div>
+                                    <p class="text-center text-[16px] text-[#5D5D5D] font-normal">
+                                        {{sections[4]?.steps[1]?.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="w-[50px] sm:w-[60px] md:w-[70px] hidden  sm:block" src="images/arrow2.png" alt="">
+                    <div
+                            class="block sm:hidden rounded-[8px] border border-[#FFEFF3] bg-[#F6F6F6] shadow-md flex flex-col gap-[10px] items-center p-[15px]">
+                            <div
+                                class="border border-[#FFB9C6] rounded-[44px] flex justify-center w-fit py-[3px] px-[8px]">
+                                <h3 class="text-[#1B1B1B] text-[22px] font-bold">03</h3>
+                            </div>
+                            <div class="flex flex-col items-center gap-[5px]">
+                                <div>
+                                    <h4 class="text-[#1B1B1B] text-[18px] font-bold">{{sections[4]?.steps[2]?.title}}
+                                    </h4>
+                                </div>
+                                <div>
+                                    <p class="text-center text-[16px] text-[#5D5D5D] font-normal">
+                                        {{sections[4]?.steps[2]?.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-business *ngIf="sections.length > 5" [section]="sections[5]"></app-business>
+
+    <section *ngIf="sections.length > 5" class="py-[50px] px-4">
+        <div class="section5 relative mx-auto px-4  max-w-[1360px] py-[20px] sm:py-[40px] flex flex-col justify-center font_helvetica_nue">
+            <div class="flex flex-col gap-[24px] max-w-[650px] mx-auto justify-between items-center">
+                <div class="flex flex-col gap-[16px] items-center">
+                    <h2 class="text-[#F4F9F9] text-[28px] sm:text-[32px] md:text-[40px] font-medium">{{sections[5]?.title}}</h2>
+                    <p class="text-[#DAEDEB] text-[14px] sm:text-[16px] font-medium">{{sections[5]?.description}}</p>
+                </div>
+                <a routerLink="/contact" class=" white_button">{{sections[5]?.buttonText}}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- <app-review></app-review> -->
+    <section *ngIf="reviews.length > 0">
+        <div class="mx-auto max-w-[1360px] pb-[60px] sm:pb-[100px] px-[16px] font_helvetica_nue">
+            <div>
+                <div class="swiper swiper-container3 pb-[40px]" init="false">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide p-[20px] custom_swiper_slide bg-[#FFF] mb-5 h-100  "
+                            *ngFor="let review of reviews;">
+                            <div class="flex flex-col sm:flex-row  justify-between">
+                                <div class="w-full lg:max-w-[780px] flex flex-col justify-center gap-[24px]">
+                                    <p class="text-[#3D3D3D] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-medium">{{review.description}}</p>
+                                    <div class="flex flex-col gap-[10px]">
+                                        <p class="text-[#1B1B1B] text-[16px] font-medium">{{review.by}}</p>
+                                        <p class="font-normal text-[#6D6D6D] text-[12px]">{{review.designation}}</p>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-[500px] h-full">
+                                    <img class="w-[100%] h-[100%] object-cover rounded-[8px]" [src]="review.image" [alt]="review.description">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative w-[120px]">
+                    <button class="custom-prev-3 swiper-button-prev"></button>
+                    <button class="custom-next-3 swiper-button-next"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

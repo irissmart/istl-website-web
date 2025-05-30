@@ -1,0 +1,10 @@
+<ng-container *ngIf="isReady">
+    <app-header *ngIf="showHeaderFooter" [class.hidden]="!showHeaderFooter"></app-header>
+  
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+  
+    <app-footer *ngIf="showHeaderFooter" [class.hidden]="!showHeaderFooter"></app-footer>
+</ng-container>
+  

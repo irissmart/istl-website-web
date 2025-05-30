@@ -1,0 +1,23 @@
+<section>
+    <div class="mx-auto max-w-[1360px] h-[550px] flex flex-col justify-center font_helvetica_nue">
+        <div class="flex flex-col py-[50px] justify-evenly h-full">
+            <div class="w-full flex flex-col items-center">
+                <h2 class="section_heading">{{section?.title}}</h2>
+                <p class="text_grey6 text-[16px] font-medium">{{section?.description}}</p>
+            </div>
+            <div class="grid grid-cols-4 gap-[20px] w-full" *ngIf="section?.detailedServices?.length">
+                <div *ngFor="let service of section.detailedServices" class="flex flex-col gap-[15px]">
+                  <div class="rounded-[50%] w-[50px] h-[50px] bg-[#FFC0CC] flex items-center justify-center">
+                    <div class="bg-[#FFA9B9] w-[70%] h-[70%] rounded-[50%] flex items-center justify-center">
+                      <fa-icon [icon]="faCircleCheck" class="text-[#391017] text-[24px]"></fa-icon>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text_grey6 text-[20px] font-medium">{{ service.title }}</h3>
+                    <p class="text_grey7 font-normal text-[16px]">{{ service.description }}</p>
+                  </div>
+                </div>
+              </div>              
+        </div>
+    </div>
+</section>

@@ -1,0 +1,94 @@
+<footer class="footer text-white">
+    <div class=" mx-auto w-full px-4 py-[70px] max-w-[1360px] font_inter">
+        <div class="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-10 sm:gap-8 pb-10">
+            <div class="col-span-2 flex flex-col gap-[12px]">
+                <a routerLink="/home">
+                    <div class="w-[250px] h-[100px]">
+                        <img class="w-full h-full object-contain" src="/images/logo2.png" alt="">
+                    </div>
+                </a>
+                <div class="max-w-[550px] flex flex-col gap-[30px]">
+                    <p class="text-[#E7E7E7] text-[16px] font-normal">Iris Smart Technologies is supporting the next
+                        generation of service providers, the world’s best
+                        brands and service providers and everyone in between</p>
+                    <p class="text-[#F6F6F6] text-[18px] font-normal">© 2025 IrisSmartTechnologies. All rights reserved.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col col-span-2 sm:col-span-1 gap-[16px]">
+                <h3 class="text-[#FFF] text-[20px] font-bold">IRIS</h3>
+                <div class="flex flex-col gap-[8px]">
+                    <a routerLink="/about" class="text-[#F6F6F6] text-[16px] font-medium">About Us</a>
+                    <a routerLink="/management" class="text-[#F6F6F6] text-[16px] font-medium">Our Management</a>
+                    <a routerLink="/partners" class="text-[#F6F6F6] text-[16px] font-medium">Our Partners</a>
+                    <a routerLink="/contact" class="text-[#F6F6F6] text-[16px] font-medium">Contact Us</a>
+                    <a routerLink="/sitemap" class="text-[#F6F6F6] text-[16px] font-medium">Sitemap</a>
+                </div>
+            </div>
+            <ng-container *ngIf="contactData$ | async as contact">
+
+                <div class="flex flex-col gap-[16px]">
+                    <h3><a routerLink="/contact" class="text-[#FFF] text-[20px] font-bold">Contact</a></h3>
+                    <div class="flex flex-col gap-[18px]">
+                        <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                            <fa-icon [icon]="faPhone" class="text-white mt-1"></fa-icon>
+                            <a [href]="'tel:' + contact.phoneNo" class="text-[#F6F6F6] text-[16px] font-medium"> {{
+                                contact.phoneNo }}
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                            <fa-icon [icon]="faEnvelope" class="text-white mt-1"></fa-icon>
+                            <a [href]="'mailto:' + contact.email" class="text-[#F6F6F6] text-[16px] font-medium">{{
+                                contact.email
+                                }}</a>
+                        </div>
+                        <div class="grid grid-cols-[24px_auto] gap-2 items-start">
+                            <fa-icon [icon]="faLocation" class="text-white mt-1"></fa-icon>
+                            <a [href]="contact.mapLink" target="_blank" rel="noopener noreferrer"
+                                class="text-[#F6F6F6] text-[16px] font-medium">
+                                {{ contact.address }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+        </div>
+        <!-- <div class="flex justify-between py-[24px]">
+            <div class="flex flex-col">
+                <h4 class="text-white font-bold text-[18px]">Join our newsletter</h4>
+                <p class="text-[16px] font-normal text-[#F6F6F6]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="flex flex-col justify-center gap-[16px]">
+                <form action="/" class="flex items-center gap-[16px]">
+                    <input type="email" placeholder="Enter your email"
+                        class="px-4 py-2 rounded-[60px] bg-white border-[1px] border-[#DAEDEB] text-[16px] font-normal text-[#D1D1D1] max-w-[230px]">
+                    <button type="submit" class="bg-[#51131F] text-[#EFEFEF] text-[16px] font-medium border-[1px] border-[#EFEFEF] px-[24px] py-[12px] rounded-[60px] hover:bg-[#781c2d] transition">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-white text-[12px] font-normal">By subscribing you agree to with our <span class="underline">Privacy Policy</span></p>
+            </div>
+
+        </div> -->
+        <div class="flex justify-end pt-[16px]">
+            <!-- <div class="flex gap-[24px]">
+                <a class="underline text-[#D1D1D1] font-normal text-[14px]" href="privacy">Privacy Policy</a>
+                <a class="underline text-[#D1D1D1] font-normal text-[14px]" href="terms">Terms of Service</a>
+                <a class="underline text-[#D1D1D1] font-normal text-[14px]" href="cookies">Cookies Settings</a>
+            </div> -->
+            <div>
+                <ul class="flex gap-[12px]">
+                    <li><a routerLink="https://facebook.com/irissmart"><fa-icon [icon]="faFacebook"
+                                class="text-white text-[24px]"></fa-icon></a></li>
+                    <li><a routerLink="https://instagram.com/irissmart"><fa-icon [icon]="faInstagram"
+                                class="text-white text-[24px]"></fa-icon></a></li>
+                    <li><a routerLink="https://twitter.com/irissmart"><fa-icon [icon]="faTwitter"
+                                class="text-white text-[24px]"></fa-icon></a></li>
+                    <li><a routerLink="https://youtube.com/irissmart"><fa-icon [icon]="faYoutube"
+                                class="text-white text-[24px]"></fa-icon></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
